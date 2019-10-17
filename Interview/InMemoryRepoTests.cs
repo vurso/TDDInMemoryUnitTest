@@ -10,18 +10,28 @@ namespace Interview
     [TestFixture]
     public class InMemoryRepoTests
     {
+        private IEnumerable<StorageStub> storageData;
+
         [OneTimeSetUp]
         public void Setup()
         {
-            // setup anything required for the tests
+            storageData = new[] { new StorageStub(1), new StorageStub(12), new StorageStub(39) };
         }
 
         [Test]
-        public void First_Test_Place_Holder()
+        public void Given_Repository_Then_Get_All_Data()
         {
-            // TODO: Configure any startups and builders
-            // TODO: GWT naming convention for tests
-            // TODO: Ensure correct coverage
+            var repo = new Repository<StorageStub>(storageData);
+        }
+
+        public class StorageStub : IStoreable<int>
+        {
+            public StorageStub(int id)
+            {
+                Id = id;
+            }
+
+            public int Id { get; set; }
         }
     }
 }
