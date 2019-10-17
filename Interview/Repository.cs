@@ -2,7 +2,7 @@
 
 namespace Interview
 {
-    public class Repository<StorageStub>
+    public class Repository<T> where T : IStoreable<T>
     {
         private IEnumerable<InMemoryRepoTests.StorageStub> storageData;
 
